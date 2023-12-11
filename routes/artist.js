@@ -54,4 +54,13 @@ router.put('/update/:id', async(req, res)=>{
     }
 })
 
+router.get('/:id', async(req, res)=>{
+    try{
+        const artist = await Artist.findById(req.params.id)
+        res.status(200).json(artist)
+    } catch(error){
+        res.status(500).json(error)
+    }
+})
+
 module.exports = router
