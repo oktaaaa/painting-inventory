@@ -2,14 +2,14 @@ const bodyParser = require('body-parser')
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
-
+const cors = require('cors')
 require('dotenv/config')
 
 app.use(bodyParser.urlencoded({
     extended: true
 }))
 app.use(bodyParser.json())
-
+app.use(cors())
 // routes okur
 const lukisanRoutes = require('./routes/lukisan')
 const artistRoutes = require('./routes/artist')
