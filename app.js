@@ -15,11 +15,13 @@ const lukisanRoutes = require('./routes/lukisan')
 const artistRoutes = require('./routes/artist')
 const mediumRoutes = require('./routes/medium')
 const museumRoutes = require('./routes/museum')
+const userRoutes = require('./routes/user')
 
 app.use('/lukisan', lukisanRoutes)
 app.use('/artist', artistRoutes)
 app.use('/medium', mediumRoutes)
 app.use('/museum', museumRoutes)
+app.use('/user', userRoutes)
 
 mongoose.connect(process.env.DB_CONNECTION, {
     useNewUrlParser: true, useUnifiedTopology: true
