@@ -4,23 +4,21 @@ const Lukisan = require('../models/Lukisan')
 const multer = require('multer')
 
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-      cb(null, 'public/');
-    },
+    destination: 'public/',
     filename: (req, file, cb) => {
       cb(null, Date.now() + '-' + file.originalname);
     },
   });
 
-  const upload = multer({ storage });
+const upload = multer({ storage });
 
 
 router.post('/create', upload.single('gambarLukisan'), async(req, res) => {
-    const gambarLukisan = req.file ? req.file.filename : null;
+    imagePath = `${req.file.filename}`
     const dataLukisan = new Lukisan({
         inventoryID: req.body.inventoryID,
         namaLukisan: req.body.namaLukisan,
-        gambarLukisan,
+        gambarLukisan:imagePath,
         tahun: req.body.tahun,
         artist: req.body.artist,
         medium: req.body.medium,

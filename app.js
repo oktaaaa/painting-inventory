@@ -16,8 +16,13 @@ const artistRoutes = require('./routes/artist')
 const mediumRoutes = require('./routes/medium')
 const museumRoutes = require('./routes/museum')
 const userRoutes = require('./routes/user')
+const multer = require('multer')
 
-app.use('/lukisan', lukisanRoutes)
+
+
+// const upload = multer({ storage: storage });
+
+app.use('/lukisan',express.static('public'), lukisanRoutes)
 app.use('/artist', artistRoutes)
 app.use('/medium', mediumRoutes)
 app.use('/museum', museumRoutes)
