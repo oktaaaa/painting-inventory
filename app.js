@@ -22,7 +22,7 @@ const multer = require('multer')
 
 // const upload = multer({ storage: storage });
 
-app.use('/lukisan', lukisanRoutes)
+app.use('/lukisan', express.static('public/uploads'), lukisanRoutes)
 app.use('/artist', artistRoutes)
 app.use('/medium', mediumRoutes)
 app.use('/museum', museumRoutes)
