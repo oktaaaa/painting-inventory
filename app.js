@@ -26,8 +26,8 @@ app.use('/lukisan', lukisanRoutes)
 app.use('/artist', artistRoutes)
 app.use('/medium', mediumRoutes)
 app.use('/museum', museumRoutes)
-app.use('/user', userRoutes)
-
+app.use('/auth', userRoutes)
+app.use('/uploads', express.static('public/uploads'));
 mongoose.connect(process.env.DB_CONNECTION, {
     useNewUrlParser: true, useUnifiedTopology: true
 })

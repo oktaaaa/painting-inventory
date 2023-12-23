@@ -4,18 +4,19 @@ const Lukisan = require('../models/Lukisan')
 const multer = require('multer')
 const app = express();
 
-// const storage = multer.diskStorage({
-//     destination: './public/uploads/',
-//     filename: (req, file, cb) => {
-//       cb(null, Date.now() + '-' + file.originalname);
-//     },
-//   });
+const storage = multer.diskStorage({
+    destination: './public/uploads/',
+    filename: (req, file, cb) => {
+      cb(null, Date.now() + '-' + file.originalname);
+    },
+  });
 
-// const upload = multer({ storage });
+const upload = multer({ storage });
 // app.use(express.static('public'));
 
-router.post('/create', async(req, res) => {
-    // imagePath = `/uploads/${req.file.filename}`
+
+router.post('/create', upload.single('gambarLukisan'), async(req, res) => {
+    imagePath = `/uploads/${req.file.filename}`
     const dataLukisan = new Lukisan({
         inventoryID: req.body.inventoryID,
         namaLukisan: req.body.namaLukisan,
