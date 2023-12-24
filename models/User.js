@@ -19,11 +19,6 @@ const UserSchema = mongoose.Schema({
         min: 6,
         max: 255
     },
-    role: {
-        type: String,
-        required: true,
-        max: 45
-    },
     createdAt: {
         type: Date,
         default: Date.now

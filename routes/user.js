@@ -32,7 +32,6 @@ router.post('/register', async (req, res) => {
         nama: req.body.nama,
         email: req.body.email,
         password: hashPassword,
-        role: req.body.role
     })
 
     try {
@@ -79,8 +78,7 @@ router.post('/login', async (req, res) => {
     const token = jwt.sign({ _id: user._id }, process.env.SECRET_KEY)
     
     res.header('Authorization', token).json({
-        token: token,
-        nama: user.nama
+        token: token
 
     })
 })
