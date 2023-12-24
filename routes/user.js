@@ -58,7 +58,7 @@ router.post('/login', async (req, res) => {
     const { error } = loginValidation(req.body)
     if (error) return res.status(400).json({
         status: res.statusCode,
-        message: "error.details[0].message"
+        message: error.details[0].message
     })
 
     
