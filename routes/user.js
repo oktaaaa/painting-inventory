@@ -80,7 +80,7 @@ router.post('/login', async (req, res) => {
     
     res.header('Authorization', token).json({
         token: token,
-        role: user.role,
+        role: "staff",
         nama: user.nama
 
     })
