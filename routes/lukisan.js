@@ -25,7 +25,7 @@ router.post('/create', async(req, res) => {
         artist: req.body.artist,
         medium: req.body.medium,
         museum: req.body.museum,
-        status: req.body.status
+        ket: req.body.ket
     })
     try {
         const lukisan = await dataLukisan.save()
