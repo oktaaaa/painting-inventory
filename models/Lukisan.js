@@ -31,7 +31,7 @@ const LukisanSchema = mongoose.Schema({
         required: true,
         ref: "Museum"
     }, 
-    status:{
+    ket:{
         type: String,
         required: true
     }, 
