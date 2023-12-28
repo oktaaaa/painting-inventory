@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const Lukisan = require('../models/Lukisan')
-const multer = require('multer')
-const app = express();
+// const multer = require('multer')
+// const app = express();
 
 // const storage = multer.diskStorage({
 //     destination: './public/uploads/',
@@ -16,11 +16,11 @@ const app = express();
 
 
 router.post('/create', async(req, res) => {
-    imagePath = `/uploads/${req.file.filename}`
+    
     const dataLukisan = new Lukisan({
         inventoryID: req.body.inventoryID,
         namaLukisan: req.body.namaLukisan,
-        gambarLukisan:imagePath,
+        gambarLukisan:req.body.gambarLukisan,
         tahun: req.body.tahun,
         artist: req.body.artist,
         medium: req.body.medium,
