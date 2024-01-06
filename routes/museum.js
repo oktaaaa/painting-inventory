@@ -39,19 +39,24 @@ router.delete('/:ID', async(req, res) => {
     }
 })
 
-router.put('/:ID', async(req, res) => {
-    const dataMuseum =({
-        namamuseum: req.body.namamuseum,
-        negara: req.body.negara,
-        alamat: req.body.alamat
-    })
-    try {
-        const mueseum = await Museum.updateOne({
-            _id: req.params.ID
-        },dataMuseum)
-        res.json(mueseum)
-    } catch (error) {
-        res.json({message: error})
+router.put('/:id', async(req, res)=>{
+    try{
+        const mueseum = await Museum.findByIdAndUpdate(req.params.id, req.body, { new: true })
+        res.status(200).json({
+            message: "Museum Updated",
+            Data: mueseum
+        })
+    } catch(error){
+        res.status(500).json(error)
+    }
+})
+
+router.get('/:id', async(req, res)=>{
+    try{
+        const mueseum = await Museum.findById(req.params.id)
+        res.status(200).json(mueseum)
+    } catch(error){
+        res.status(500).json(error)
     }
 })
 

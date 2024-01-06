@@ -39,19 +39,24 @@ router.delete('/:ID', async(req, res) => {
     }
 })
 
-router.put('/:ID', async(req, res) => {
-    const dataMedium =({
-        namamedium: req.body.namamedium,
-        baseingredient: req.body.baseingredient,
-        keterangan: req.body.keterangan
-    })
-    try {
-        const medium = await Medium.updateOne({
-            _id: req.params.ID
-        },dataMedium)
-        res.json(medium)
-    } catch (error) {
-        res.json({message: error})
+router.put('/:id', async(req, res)=>{
+    try{
+        const medium = await Medium.findByIdAndUpdate(req.params.id, req.body, { new: true })
+        res.status(200).json({
+            message: "Medium Updated",
+            Data: medium
+        })
+    } catch(error){
+        res.status(500).json(error)
+    }
+})
+
+router.get('/:id', async(req, res)=>{
+    try{
+        const medium = await Medium.findById(req.params.id)
+        res.status(200).json(medium)
+    } catch(error){
+        res.status(500).json(error)
     }
 })
 
