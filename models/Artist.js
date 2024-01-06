@@ -1,3 +1,4 @@
+// test
 const mongoose = require('mongoose')
 const ArtistSchema = mongoose.Schema({
     namaArtist: {
